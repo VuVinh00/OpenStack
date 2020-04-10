@@ -3,7 +3,7 @@
 OpenStack token là bearer tokens, được sử dụng để authenticate và validate users và processes trong môi trường Openstack. Dịch vụ Openstack Keystone là một core service chịu trách nhiệm về các issues và validates tokens. Khi sử dụng tokens, users và các software clients thông qua API's authenticate có thể nhận và cuối cùng sử dụng token khi gửi các request. Ví dụ khi tạo compute resources để cấp phát storage, các service như Nova hoặc Ceph sẽ phải validate token với Keystone, nếu được Keystone chấp nhận thì sẽ thực hiện requested, còn không sẽ bị deny
 
 
-![alt text](/2.Keystone/Images/token-work.png "Title Text")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/token-work.png">
 
 ### 2. Các loại token
 
@@ -80,7 +80,7 @@ Fernet sử dụng Base64 URL safe để encoded các thành phần trên
 
 ###### Fernet Token Generation Workflow
 
-![alt text](/2.Keystone/Images/generationtoken.png "Generation")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/generationtoken.png">
 
 - 1. Kết hợp các thông tin: Version, User ID, Methods, Project ID, Expiry Time, Audit ID với Padding
 - 2. Các thông tin trên được mã hóa bằng Encryption key (Cipher Text)
@@ -89,7 +89,7 @@ Fernet sử dụng Base64 URL safe để encoded các thành phần trên
 
 ###### Fernet Token Validation Workflow
 
-![alt text](/2.Keystone/Images/validationtoken.png "validationtoken")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/validationtoken.png">
 
 - 1. Restore Padding
 - 2. Giải mã token bằng cách sử dụng Fernet Keys để nhận payload
@@ -144,11 +144,11 @@ Cuối cùng, ở dưới output, ta sẽ thấy lời gọi API để lấy lis
 
 --> Overall flow sẽ như thế này:
 
-![alt text](/2.Keystone/Images/authorizationworkflowgetprojects.png "authorizationworkflowgetprojects")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/authorizationworkflowgetprojects.png">
 
 Tương tự như các service khác
 
-![alt text](/2.Keystone/Images/openstackauthorization.png "openstackauthorization")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/openstackauthorization.png">
 
 ### 5. Lấy token, thao tác với OpenStack API
 
@@ -196,14 +196,14 @@ Bước 2: Chèn data raw dạng json vào body để xác thực
 }
 ```
 
-![alt text](/2.Keystone/Images/body.png "body")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/body.png">
 
 Bước 3: Thiết lập header "Content-Type"
 
-![alt text](/2.Keystone/Images/contextheader.png "contextheader")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/contextheader.png">
 
 Bước 4: Gửi request
 
 Bước 5: Kết quả trả về token và giá trị X-Subject-Token tại header response
 
-![alt text](/2.Keystone/Images/tokenunscoped.png "tokenunscoped")
+<img src="https://github.com/VuVinh00/OpenStack/blob/master/Image/tokenunscoped.png">
