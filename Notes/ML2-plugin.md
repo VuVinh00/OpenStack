@@ -9,7 +9,10 @@
 **Modular Layer 2 (ML2)** neutron plug-in là framework cho phép OpenStack Networking đồng thời sử dụng nhiều công nghệ mạng. ML2 framework phân biệt giữa 2 loại drivers có thể được cấu hình:
 
 - **Type drivers**:
-  - Định nghĩa cách mà OpenStack network thực hiện kỹ thuật. VD: VXLAN
+  - Định nghĩa cách mà OpenStack network thực hiện kỹ thuật.
+    - Flat: Tất cả instances kết nối vào một network chung. Không được tag VLAN_ID vào packet hoặc phân chia vùng mạng
+    - VLAN(12bit = 4096 id) : mạng LAN ảo
+    - VXLAN/GRE(24bit = 16 triệu id) : tạo ra các mạng ảo L2 trên nền hạ tầng mạng L3 network
   - Mỗi loại mạng được quản lý bởi ML2 type driver. Type drivers duy trì bất kỳ trạng thái mạng cụ thể nào. Chúng xác nhận thông tin cụ thể cho provider network và có trách nhiện phân bổ segment miễn phí trong project networks.
 - **Mechanism drivers**
   - Định nghĩa cơ chế (machanism) truy cập OpenStack network của loại nào đó. VD: Open vSwitch mechanism driver.
