@@ -1,4 +1,12 @@
-Modular Layer 2 (ML2) neutron plug-in là framework cho phép OpenStack Networking đồng thời sử dụng nhiều công nghệ mạng. ML2 framework phân biệt giữa 2 loại drivers có thể được cấu hình:
+**Core API** chịu trách nhiệm cung cấp kết nối Layer-2 cho VM. API server gọi tới core plugin khi nó nhận được request create a new virtual network hoặc khi một port mới được tạo trên virtual network
+
+**Core plugin** implement một số Neutron resources:
+- **Network**: Neutron network resource đại diện cho một domain Layer-2. Tất cả virtual instances cần network đều phải kết nối tới virtual network
+- **Ports**: A Neutron port đại diện cho một thiết bị đầu cuối tham gia vào virtual network
+- **Subnet**: Neutron subnet resouces add thêm Layer-3 pool tới Neutron network. The subnet có thể có một DHCP server cung cấp IP cho VM
+
+
+**Modular Layer 2 (ML2)** neutron plug-in là framework cho phép OpenStack Networking đồng thời sử dụng nhiều công nghệ mạng. ML2 framework phân biệt giữa 2 loại drivers có thể được cấu hình:
 
 - Type drivers:
   - Định nghĩa cách mà OpenStack network thực hiện kỹ thuật. VD: VXLAN
